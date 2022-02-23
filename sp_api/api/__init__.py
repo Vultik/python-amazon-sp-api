@@ -4,10 +4,14 @@ from .orders.orders import Orders
 from .product_fees.product_fees import ProductFees
 from .sellers.sellers import Sellers
 from .reports.reports import Reports
+from .reports.reports import Reports as ReportsV2
+
 from .products.products import Products
 from .sales.sales import Sales
 from .catalog.catalog import Catalog
 from .feeds.feeds import Feeds
+from .feeds.feeds import Feeds as FeedsV2
+
 from .inventories.inventories import Inventories
 from .fulfillment_inbound.fulfillment_inbound import FulfillmentInbound
 from .upload.upload import Upload
@@ -15,6 +19,12 @@ from .messaging.messaging import Messaging
 from .merchant_fulfillment.merchant_fulfillment import MerchantFulfillment
 
 ##### DO NOT DELETE ########## INSERT IMPORT HERE #######
+from .listings_restrictions.listings_restrictions import ListingsRestrictions
+    
+
+
+from .messaging.messaging import Messaging
+    
 from .catalog_items.catalog_items import CatalogItems
     
 from .product_type_definitions.product_type_definitions import ProductTypeDefinitions
@@ -77,6 +87,14 @@ __all__ = [
     "FulfillmentInbound",
     "MerchantFulfillment",
     ##### DO NOT DELETE ########## INSERT TITLE HERE #######
+    "ListingsRestrictions",
+    
+    "Feeds",
+    "FeedsV2",
+    "ReportsV2",
+    
+    "Messaging",
+    
     "CatalogItems",
     
     "ProductTypeDefinitions",

@@ -1,4 +1,6 @@
 import pprint
+import time
+from datetime import datetime, timedelta
 
 from sp_api import api
 from sp_api.api import Reports
@@ -115,3 +117,16 @@ def test_get_reports_3():
     res = Reports().get_reports(reportTypes=report_types, processingStatuses=processing_status)
     assert res.errors is None
 
+
+def test_get_reports_4():
+    report_types = [
+        ReportType.FEE_DISCOUNTS_REPORT,
+        ReportType.GET_AFN_INVENTORY_DATA
+    ]
+    processing_status = [
+        ProcessingStatus.IN_QUEUE,
+        ProcessingStatus.IN_PROGRESS
+    ]
+    res = Reports().get_reports(reportTypes=report_types, processingStatuses=processing_status,
+                                marketplaceIds=[Marketplaces.US, Marketplaces.US.marketplace_id])
+    assert res.errors is None

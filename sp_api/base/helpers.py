@@ -1,10 +1,9 @@
 from io import BytesIO
-
-from Crypto.Util.Padding import pad
 import hashlib
 
-import base64
-from Crypto.Cipher import AES
+import warnings
+import functools
+
 
 
 def fill_query_params(query, *args):
@@ -24,31 +23,6 @@ def sp_endpoint(path, method='GET'):
         return wrapper
 
     return decorator
-
-
-def encrypt_aes(file_or_bytes_io, key, iv):
-    key = base64.b64decode(key)
-    iv = base64.b64decode(iv)
-    aes = AES.new(key, AES.MODE_CBC, iv)
-    try:
-        if isinstance(file_or_bytes_io, BytesIO):
-            return aes.encrypt(pad(file_or_bytes_io.read(), 16))
-        return aes.encrypt(pad(bytes(file_or_bytes_io.read(), encoding='iso-8859-1'), 16))
-    except UnicodeEncodeError:
-        file_or_bytes_io.seek(0)
-        return aes.encrypt(pad(bytes(file_or_bytes_io.read(), encoding='utf-8'), 16))
-    except TypeError:
-        file_or_bytes_io.seek(0)
-        return aes.encrypt(pad(file_or_bytes_io.read(), 16))
-
-
-def decrypt_aes(content, key, iv):
-    key = base64.b64decode(key)
-    iv = base64.b64decode(iv)
-    decrypter = AES.new(key, AES.MODE_CBC, iv)
-    decrypted = decrypter.decrypt(content)
-    padding_bytes = decrypted[-1]
-    return decrypted[:-padding_bytes]
 
 
 def create_md5(file):
@@ -108,3 +82,18 @@ def _nest_dict_rec(k, v, out):
         _nest_dict_rec(rest[0], v, out.setdefault(k, {}))
     else:
         out[k] = v
+
+
+def deprecated(func):
+    """This is a decorator which can be used to mark functions
+    as deprecated. It will result in a warning being emitted
+    when the function is used."""
+    @functools.wraps(func)
+    def new_func(*args, **kwargs):
+        warnings.simplefilter('always', DeprecationWarning)  # turn off filter
+        warnings.warn("Call to deprecated function {}.".format(func.__name__),
+                      category=DeprecationWarning,
+                      stacklevel=2)
+        warnings.simplefilter('default', DeprecationWarning)  # reset filter
+        return func(*args, **kwargs)
+    return new_func
