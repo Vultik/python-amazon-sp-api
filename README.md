@@ -20,6 +20,12 @@ or
 
 ---
 
+### Donate
+
+
+[:heart: Donate](https://github.com/sponsors/saleweaver)
+
+
 ### Installation
 [![Badge](https://img.shields.io/pypi/v/python-amazon-sp-api?style=for-the-badge)](https://pypi.org/project/python-amazon-sp-api/)
 ```
