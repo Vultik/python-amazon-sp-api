@@ -1,8 +1,2 @@
-sphinx
-sphinx-rtd-theme
 
-
-
-
-
-sphinx-book-theme
+sphinx_rtd_theme
