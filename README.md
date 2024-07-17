@@ -1,3 +1,7 @@
+[![Downloads](https://static.pepy.tech/badge/python-amazon-sp-api)](https://pepy.tech/project/python-amazon-sp-api)
+[![Downloads](https://static.pepy.tech/badge/python-amazon-sp-api/month)](https://pepy.tech/project/python-amazon-sp-api)
+[![Downloads](https://static.pepy.tech/badge/python-amazon-sp-api/week)](https://pepy.tech/project/python-amazon-sp-api)
+
 # PYTHON-AMAZON-SP-API
 
 
@@ -9,11 +13,26 @@ A wrapper to access **Amazon's Selling Partner API** with an easy-to-use interfa
 
 ---
 
-### Version 1 Upgrade notice
+# 🌟 Thank you for using python-amazon-sp-api! 🌟
 
-Version 1 removes AWS IAM or AWS Signature Version 4 authentication.
-You can now use the library without AWS credentials.
-For compatibility reasons, you can still pass AWS credentials, but they are silently ignored.
+This tool helps developers and businesses connect seamlessly with Amazon's vast marketplace, enabling powerful automations and data management.
+
+If you appreciate this project and find it useful, please consider supporting its continued development:
+
+- 🙌 [GitHub Sponsors](https://github.com/sponsors/saleweaver)
+- 🌐 BTC Address: `bc1q6uqgczasmnvnc5upumarugw2mksnwneg0f65ws`
+- 🌐 ETH Address: `0xf59534F7a7F5410DBCD0c779Ac3bB6503bd32Ae5`
+
+Your support helps keep the project alive and evolving, and is greatly appreciated!
+
+----
+
+### Documentation
+
+Documentation is available [here](https://python-amazon-sp-api.readthedocs.io/en/latest/)
+
+[![Documentation Status](https://img.shields.io/readthedocs/python-amazon-sp-api?style=for-the-badge)](https://python-amazon-sp-api.readthedocs.io/en/latest/index.html)
+
 
 ### Q & A
 
@@ -24,13 +43,6 @@ If you have questions, please ask them in GitHub discussions
 or
 
 [![join on slack](https://img.shields.io/badge/slack-join%20on%20slack-orange?style=for-the-badge&logo=slack)](https://join.slack.com/t/sellingpartnerapi/shared_invite/zt-zovn6tch-810j9dBPQtJsvw7lEXSuaQ)
-
----
-
-### Donate
-
-
-[:heart: Donate](https://github.com/sponsors/saleweaver)
 
 
 ### Installation
@@ -68,7 +80,7 @@ except SellingApiException as ex:
 
 
 # report request     
-createReportResponse = Reports().create_report(reportType=ReportType.GET_MERCHANT_LISTINGS_ALL_DATA)
+create_report_response = Reports().create_report(reportType=ReportType.GET_MERCHANT_LISTINGS_ALL_DATA)
 
 # submit feed
 # feeds can be submitted like explained in Amazon's docs, or simply by calling submit_feed
@@ -81,18 +93,11 @@ Orders(restricted_data_token='<token>').get_orders(CreatedAfter=(datetime.utcnow
 
 # or use the shortcut
 orders = Orders().get_orders(
-    RestrictedResources=['buyerInfo', 'shippingAddress'],
     LastUpdatedAfter=(datetime.utcnow() - timedelta(days=1)).isoformat()
 )
 ```
 
 ---
-
-### Documentation
-
-Documentation is available [here](https://python-amazon-sp-api.readthedocs.io/en/latest/)
-
-[![Documentation Status](https://img.shields.io/readthedocs/python-amazon-sp-api?style=for-the-badge)](https://python-amazon-sp-api.readthedocs.io/en/latest/index.html)
 
 
 ### New endpoints
@@ -128,26 +133,5 @@ The client is pretty extensible and can be used for any other API. Check it out 
 
 [API Client](https://github.com/saleweaver/rapid_rest_client)
 
----
-[![Quality gate](https://sonarcloud.io/api/project_badges/quality_gate?project=saleweaver_python-amazon-sp-api)](https://sonarcloud.io/summary/new_code?id=saleweaver_python-amazon-sp-api)
 
-[![Maintainability Rating](https://sonarcloud.io/api/project_badges/measure?project=saleweaver_python-amazon-sp-api&metric=sqale_rating)](https://sonarcloud.io/summary/new_code?id=saleweaver_python-amazon-sp-api)
-[![Reliability Rating](https://sonarcloud.io/api/project_badges/measure?project=saleweaver_python-amazon-sp-api&metric=reliability_rating)](https://sonarcloud.io/summary/new_code?id=saleweaver_python-amazon-sp-api)
-[![Coverage](https://sonarcloud.io/api/project_badges/measure?project=saleweaver_python-amazon-sp-api&metric=coverage)](https://sonarcloud.io/summary/new_code?id=saleweaver_python-amazon-sp-api)
-
-
-[![Bugs](https://sonarcloud.io/api/project_badges/measure?project=saleweaver_python-amazon-sp-api&metric=bugs)](https://sonarcloud.io/summary/new_code?id=saleweaver_python-amazon-sp-api)
-
-[//]: # ([![Code Smells]&#40;https://sonarcloud.io/api/project_badges/measure?project=saleweaver_python-amazon-sp-api&metric=code_smells&#41;]&#40;https://sonarcloud.io/summary/new_code?id=saleweaver_python-amazon-sp-api&#41;)
-
-[//]: # ([![Technical Debt]&#40;https://sonarcloud.io/api/project_badges/measure?project=saleweaver_python-amazon-sp-api&metric=sqale_index&#41;]&#40;https://sonarcloud.io/summary/new_code?id=saleweaver_python-amazon-sp-api&#41;)
-
-[![Security Rating](https://sonarcloud.io/api/project_badges/measure?project=saleweaver_python-amazon-sp-api&metric=security_rating)](https://sonarcloud.io/summary/new_code?id=saleweaver_python-amazon-sp-api)
-[![Lines of Code](https://sonarcloud.io/api/project_badges/measure?project=saleweaver_python-amazon-sp-api&metric=ncloc)](https://sonarcloud.io/summary/new_code?id=saleweaver_python-amazon-sp-api)
-[![Duplicated Lines (%)](https://sonarcloud.io/api/project_badges/measure?project=saleweaver_python-amazon-sp-api&metric=duplicated_lines_density)](https://sonarcloud.io/summary/new_code?id=saleweaver_python-amazon-sp-api)
-
----
-[![Downloads](https://static.pepy.tech/badge/python-amazon-sp-api)](https://pepy.tech/project/python-amazon-sp-api)
-[![Downloads](https://static.pepy.tech/badge/python-amazon-sp-api/month)](https://pepy.tech/project/python-amazon-sp-api)
-[![Downloads](https://static.pepy.tech/badge/python-amazon-sp-api/week)](https://pepy.tech/project/python-amazon-sp-api)
 
